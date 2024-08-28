@@ -45,9 +45,9 @@ class Recipe extends Model
         return $this->hasMany(RecipeTutorial::class, 'recipe_id');
     }
 
-    public function author():HasMany
+    public function author(): BelongsTo
     {
-        return $this->hasMany(RecipeAuthor::class, 'recipe_author_id');
+        return $this->belongsTo(RecipeAuthor::class, 'recipe_author_id');
     }
 
     public function recipeIngredient():HasMany
