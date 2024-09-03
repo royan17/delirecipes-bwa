@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class IngredientResource extends Resource
 {
@@ -24,6 +25,13 @@ class IngredientResource extends Resource
         return $form
             ->schema([
                 //
+                Forms\Components\TextInput::make('name')
+                ->required()
+                ->maxLength(255),
+
+                Forms\Components\FileUpload::make('photo')
+                ->image()
+                ->required(),
             ]);
     }
 
@@ -32,6 +40,10 @@ class IngredientResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('name')
+                ->searchable(),
+
+            Tables\Columns\ImageColumn::make('photo')
             ])
             ->filters([
                 //
