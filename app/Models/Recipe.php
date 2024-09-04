@@ -18,7 +18,7 @@ class Recipe extends Model
         'slug',
         'thumbnail',
         'about',
-        'ulr_file',
+        'url_file',
         'url_video',
         'category_id',
         'recipe_author_id'
@@ -50,7 +50,7 @@ class Recipe extends Model
         return $this->belongsTo(RecipeAuthor::class, 'recipe_author_id');
     }
 
-    public function recipeIngredient():HasMany
+    public function recipeIngredients():HasMany
     {
         return $this->hasMany(RecipeIngredient::class, 'recipe_id');
     }
